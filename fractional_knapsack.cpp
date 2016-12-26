@@ -7,37 +7,8 @@ using std::cin;
 using std::endl;
 
 void sort_max_to_min(vector<double> &values, vector<double> &weights, long left, long right) {
-// using quicksort
-  long i = left;
-  long j = right;
-  double temp;
-  double pivot = ((double)values[left]/weights[left] + (double)values[right]/weights[right])/2;// + 
-                      // (double)values[(left + right)/2]/weights[(left + right)/2])/3;
-  // cout << "Idhar to bhi aaya bhai" << endl;
-
-  while (i <= j) {
-    while ((double)values[i]/weights[i] > pivot)
-      i++;
-
-    while ((double)values[j]/weights[j] < pivot)
-      j--;
-
-    if (i <= j) {
-      temp = values[i];
-      values[i] = values[j];
-      values[j] = temp;
-      temp = weights[i];
-      weights[i] = weights[j];
-      weights[j] = temp;
-      i++;
-      j--;
-    }
-
-    if (left < j)
-      sort_max_to_min(values, weights, left, j);
-    if (i < right)
-      sort_max_to_min(values, weights, i, right);
-  }
+// using bubble sort
+  
 }
 
 double get_optimal_value(double capacity, vector<double> weights, vector<double> values) {
