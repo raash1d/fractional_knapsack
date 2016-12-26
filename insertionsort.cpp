@@ -9,20 +9,18 @@ using std::cin;
 using std::endl;
 
 void insertion_sort(vector<int> &v) { // using quicksort
-  for (int i=1; i<v.size(); i++) {
-    // int x = v[i];
-    int j = i;
-    while (j>0 && v[j-1]<v[j] ) {
-      int temp = v[j];
-      v[j] = v[j-1];
-      v[j-1] = temp;
-      j--;
+  for (int i = 1; i < v.size(); i++) {
+    int x = v[i];
+    int j = i - 1;
+    while (j >= 0 && v[j] < x) {
+      v[j+1] = v[j];
+      j = j - 1;
     }
-    // v[j+1] = x;
-    cout << "Sorted array: ";
-    for (int k=0; k<v.size(); k++)
-      cout << v[k] << ' ';
-    cout << endl;
+    v[j+1] = x;
+    // cout << "Sorted array: ";
+    // for (int k=0; k<v.size(); k++)
+    //   cout << v[k] << ' ';
+    // cout << endl;
   }
 }
 
