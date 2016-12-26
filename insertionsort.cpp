@@ -8,43 +8,21 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-void insertion(vector<int> &values, int left, int right) { // using quicksort
-  // vector<int> v=values, w=values;
-  int i = left;
-  int j = right;
-  int temp;
-  int pivot = (values[left] + values[right] + values[(left+right)/2]) / 3;
-  cout << "Pivot point: " << (left + right)/2 << " Pivot value: " << pivot << endl;
-
-  while (i <= j) {
-    while (values[i] < pivot) {
-      i++;
-    }
-    cout << "i = " << i << " Value at " << i << "= " << values[i] << endl;
-
-    while (values[j] > pivot) {
-      j--;
-      // cout << j << ' ' << values[j] << ' ';
-    }
-    cout << "j = " << j << " Value at " << j << "= " << values[j] << endl;
-
-    if (i <= j) {
-      temp = values[i];
-      values[i] = values[j];
-      values[j] = temp;
-      i++;
+void insertion_sort(vector<int> &v) { // using quicksort
+  for (int i=1; i<v.size(); i++) {
+    // int x = v[i];
+    int j = i;
+    while (j>0 && v[j-1]<v[j] ) {
+      int temp = v[j];
+      v[j] = v[j-1];
+      v[j-1] = temp;
       j--;
     }
-    
+    // v[j+1] = x;
     cout << "Sorted array: ";
-    for (int k=0; k<values.size(); k++)
-      cout << values[k] << ' ';
+    for (int k=0; k<v.size(); k++)
+      cout << v[k] << ' ';
     cout << endl;
-
-    if (left < j)
-      sort_max_to_min(values, left, j);
-    if (i < right)
-      sort_max_to_min(values, i, right);
   }
 }
 
@@ -55,7 +33,7 @@ int main() {
   for (int i=0; i<n; i++)
     cin >> v[i];
 
-  sort_max_to_min(v,0,n-1);
+  insertion_sort(v);
   for (int i=0; i<v.size(); i++)
     cout << v[i] << ' ';
   cout << endl;
